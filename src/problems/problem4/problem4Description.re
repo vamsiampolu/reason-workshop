@@ -1,0 +1,53 @@
+let src = {j|
+# Problem 4 - In a Dangerous State
+
+## Requirements
+* A 50x50 px square rendered on the screen
+* when the square is clicked, the background is permenantly green
+* when the square is hovered, the background is blue
+
+## Instructions
+Building off the workd done last 3, this problem wraps up what you've learnt so far. In this problem we introduce the concept of state. State in this system is essentially used as a sentinel for an internal data change that should force a re-render. The canonical example is a button that increments a counter. On each press of the button, the counter should inrement, causing the counter to re-render.
+
+In reason's react bindings, state is defined as a record type on the internal module of a component. The shape of the internal module is similar to what we saw in [problem1](/problems/1) with the addition of two new properties: state and getInitialState.
+
+```reason
+/*
+requires the module to implement:
+  * let name : string;
+  * type props : 'a;
+  * type state : 'a;
+  * let getInitialState = fun props => state;
+  * let render = fun componentBag => ReactRe.createElement;
+*/
+include ReactRe.Component.Stateful;
+
+/* this component takes no props */
+type props = unit;
+
+/* its name should be displayed as "Counter" */
+let name  "Counter"
+
+/* its state is a record that stores two bools */
+type state = {count: int};
+
+/* when initially rendered, default its state */
+let getInitialState (_:props) => {count: 0};
+
+let handleClick {state} event => {
+  Some {...state, count: state.count + 1}
+};
+
+/* now, we can conditionally render as a result of state, and bind state mutating functions using updater */
+let render ({props, state, updater}:componentBagRecord) => {
+  <div onClick=(updater handleClick)>
+    (ReactRe.stringToElement "Click Me")
+    (ReactRe.stringToElement {| Clicked \$(state.count) times! |})
+  </div>
+};
+```
+
+This opens up some new abilities to us. We can now store the state of the component close in code to where it's used. It's important to note that from the perspective of the component, even though we've termed it "stateful", no variables are mutated. The component itself treats state as an implementation detail left up to the React library.
+
+Using the snippet above as a guide, edit the Problem code to return state objects that toggle the clicked state, and toggle the hovered state based on the onMouseEnter and onMouseLeave events. Also edit the switchStyle function so that it returns the correct styles according to the comment inside that function.
+|j};

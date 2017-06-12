@@ -1,0 +1,39 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx /home/j/dev/os/reason-workshop/node_modules/bs-platform/bin/reactjs_jsx_ppx.exe
+FLG -ppx /home/j/dev/os/reason-workshop/node_modules/bs-platform/bin/bsppx.exe
+S /home/j/dev/os/reason-workshop/node_modules/bs-platform/lib/ocaml
+B /home/j/dev/os/reason-workshop/node_modules/bs-platform/lib/ocaml
+FLG -nostdlib -no-alias-deps -color always -w -40+6+7+27+32..39+44+45
+S /home/j/dev/os/reason-workshop/node_modules/bs-containers/lib/ocaml
+B /home/j/dev/os/reason-workshop/node_modules/bs-containers/lib/ocaml
+S /home/j/dev/os/reason-workshop/node_modules/bs-express/lib/ocaml
+B /home/j/dev/os/reason-workshop/node_modules/bs-express/lib/ocaml
+S /home/j/dev/os/reason-workshop/node_modules/reason-react/lib/ocaml
+B /home/j/dev/os/reason-workshop/node_modules/reason-react/lib/ocaml
+S src
+B lib/bs/src
+S src/problems
+B lib/bs/src/problems
+S src/problems/problem10
+B lib/bs/src/problems/problem10
+S src/problems/problem9
+B lib/bs/src/problems/problem9
+S src/problems/problem8
+B lib/bs/src/problems/problem8
+S src/problems/problem7
+B lib/bs/src/problems/problem7
+S src/problems/problem6
+B lib/bs/src/problems/problem6
+S src/problems/problem5
+B lib/bs/src/problems/problem5
+S src/problems/problem4
+B lib/bs/src/problems/problem4
+S src/problems/problem3
+B lib/bs/src/problems/problem3
+S src/problems/problem2
+B lib/bs/src/problems/problem2
+S src/problems/problem1
+B lib/bs/src/problems/problem1
+S src/core
+B lib/bs/src/core
+####BSB GENERATED: NO EDIT}

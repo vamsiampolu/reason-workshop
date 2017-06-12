@@ -1,0 +1,36 @@
+{
+  "name": "reason-workshop",
+  "package-specs": [
+    "es6",
+    "commonjs"
+  ],
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": [
+        "core",
+        {
+          "dir": "problems",
+          "subdirs": [
+            "problem1",
+            "problem2",
+            "problem3",
+            "problem4",
+            "problem5",
+            "problem6",
+            "problem7",
+            "problem8",
+            "problem9",
+            "problem10",
+          ]
+        }
+      ]
+    }
+  ],
+  "reason" : { "react-jsx" : true},
+  "bs-dependencies": [
+    "bs-containers",
+    "bs-express",
+    "reason-react"
+  ]
+}
