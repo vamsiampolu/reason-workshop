@@ -6,7 +6,7 @@ Before beginning this example, you should have completed the installation instru
 
 ## Workshop
 
-To run the workshop, run `npm run watch`. In a browser navigate to http://localhost:8080/problems/1 and follow the instructions from there. If any of this is unclear, please ask for help from your instructor or from anyone around you.
+To run the workshop, run `npm run watch`. In a browser navigate to <http://localhost:8080/problems/1> and follow the instructions from there. If any of this is unclear, please ask for help from your instructor or from anyone around you.
 
 This project requires two ports to be free on your machine, 3000 and 8080. You can override these with the setting `SERVER_PORT` and `WEBPACK_PORT` like so:
 
