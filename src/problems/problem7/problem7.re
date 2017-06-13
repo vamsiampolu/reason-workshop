@@ -18,23 +18,23 @@ use the Shape.Make functor to create two new modules:
 and replace the switch statement in Problem7 to render the correct shapes.
  */
 
-module Problem7 = {
-  include ReactRe.Component.Stateful;
-  type state = {shape};
-  type props = unit;
-  let name = "Problem7";
-  let getInitialState _ :state => {shape: Circle};
-  let render {state, updater} => {
-    let handleClick shape _ _ => Some {shape: shape};
+type state = {shape};
+let component = ReasonReact.statefulComponent "Problem4";
+let make _children => {
+  ...component,
+  initialState: fun () => {shape: Circle},
+  render: fun state {update} => {
+    let handleClick shape _event _state _self => ReasonReact.Update {shape: shape};
     <div>
       <div>
-        <button onClick=(updater @@ handleClick Circle)>
+        <button onClick=(update @@ handleClick Circle)>
           (ReactRe.stringToElement "show circle")
         </button>
-        <button onClick=(updater @@ handleClick Square)>
+        <button onClick=(update @@ handleClick Square)>
           (ReactRe.stringToElement "show square")
         </button>
       </div>
+
       (
         switch state.shape {
         | Circle => <div> (ReactRe.stringToElement "change me to a circle") </div>
@@ -42,9 +42,5 @@ module Problem7 = {
         }
       )
     </div>
-  };
-};
-
-include ReactRe.CreateComponent Problem7;
-
-let createElement = wrapProps ();
+  }
+}

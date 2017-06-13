@@ -1,4 +1,4 @@
 external reactMarkdown : ReactRe.reactClass = "react-markdown" [@@bs.module];
 
-let createElement source::(source: string) =>
-  ReactRe.wrapPropsShamelessly reactMarkdown {"source": source};
+let make source::(source: string) children =>
+  ReasonReact.wrapJsForReason reactClass::reactMarkdown props::{"source": source} children;

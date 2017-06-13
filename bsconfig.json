@@ -27,7 +27,7 @@
       ]
     }
   ],
-  "reason" : { "react-jsx" : true},
+  "reason" : { "react-jsx" : 2 },
   "bs-dependencies": [
     "bs-containers",
     "bs-express",

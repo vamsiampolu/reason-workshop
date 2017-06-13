@@ -7,15 +7,23 @@ external route : ReactRe.reactClass = "Route" [@@bs.module "react-router-dom"];
 type rrfn = Js.t {. _match : Js.t {. url : string}};
 
 module Route = {
-  let createElement exact::(exact: bool) path::(path: string) component::(component: 'a) =>
-    ReactRe.wrapPropsShamelessly
-      route {"exact": Js.Boolean.to_js_boolean exact, "path": path, "component": component};
+  let make exact::(exact: bool) path::(path: string) component::(component: 'a) children =>
+    ReasonReact.wrapJsForReason
+      reactClass::route
+      props::{"exact": Js.Boolean.to_js_boolean exact, "path": path, "component": component}
+      children;
 };
 
 module NavLink = {
-  let createElement _to::(_to: string) => ReactRe.wrapPropsShamelessly navLink {"to": _to};
+  let make _to::(_to: string) children =>
+    ReasonReact.wrapJsForReason
+      reactClass::navLink
+      props::{"to": _to}
+      children;
 };
 
 module BrowserRouter = {
-  let createElement = ReactRe.wrapPropsShamelessly browserRouter (Js.Obj.empty ());
+  let make = ReasonReact.wrapJsForReason
+    reactClass::browserRouter
+    props::(Js.Obj.empty ());
 };

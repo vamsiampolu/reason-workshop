@@ -1,12 +1,8 @@
-module Problem6 = {
-  include ReactRe.Component;
-  type props = unit;
-  let name = "Problem6";
-  let render _ =>
+let component = ReasonReact.statelessComponent "Problem6";
+let make _children => {
+  ...component,
+  render: fun () _self => {
     /* replace this with a call to <Square /> */
     <div />;
-};
-
-include ReactRe.CreateComponent Problem6;
-
-let createElement = wrapProps ();
+  }
+}

@@ -3,13 +3,10 @@ let style =
     /* place the appropriate styles here */
     ();
 
-module Problem10 = {
-  include ReactRe.Component;
-  type props = unit;
-  let name = "Problem10";
-  let render _ => <div style />;
-};
-
-include ReactRe.CreateComponent Problem10;
-
-let createElement = wrapProps ();
+let component = ReasonReact.statelessComponent "Problem10";
+let make _children => {
+  ...component,
+  render: fun () _self => {
+    <div style />;
+  }
+}

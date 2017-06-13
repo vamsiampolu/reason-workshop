@@ -2,14 +2,10 @@ let style =
   ReactDOMRe.Style.make
     /* place the appropriate styles here */
     ();
-
-module Problem2 = {
-  include ReactRe.Component;
-  type props = unit;
-  let name = "Problem2";
-  let render _ => <div style />;
+let component = ReasonReact.statelessComponent "Problem2";
+let make _children => {
+  ...component,
+  render: fun () _self => {
+    <div style />;
+  }
 };
-
-include ReactRe.CreateComponent Problem2;
-
-let createElement = wrapProps ();

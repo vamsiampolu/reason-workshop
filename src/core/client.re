@@ -5,7 +5,11 @@ external accept : string => (unit => unit) => unit = "module.hot.accept" [@@bs.v
 external appContainer : ReactRe.reactClass = "AppContainer" [@@bs.module "react-hot-loader"];
 
 module AppContainer = {
-  let createElement = ReactRe.wrapPropsShamelessly appContainer (Js.Obj.empty ());
+  let make children =>
+    ReasonReact.wrapJsForReason
+      reactClass::appContainer
+      props::(Js.Obj.empty ())
+      children;
 };
 
 open ReactRouter;

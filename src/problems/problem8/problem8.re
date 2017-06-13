@@ -1,21 +1,17 @@
 module Problem8Inner = {
-  module Component = {
-    include ReactRe.Component;
-    type props = unit;
-    let name = "Problem8";
-    let render _ => <div />;
-  };
-  include ReactRe.CreateComponent Component;
-  let createElement = wrapProps ();
+  let component = ReasonReact.statelessComponent "Problem8Inner";
+  let make _children => {
+    ...component,
+    render: fun () _self => {
+      <div> (ReasonReact.stringToElement "Problem 8 Inner Component") </div>
+    }
+  }
 };
 
-module Problem8 = {
-  include ReactRe.Component;
-  type props = unit;
-  let name = "Problem8";
-  let render _ => <div> <Problem8Inner /> </div>;
-};
-
-include ReactRe.CreateComponent Problem8;
-
-let createElement = wrapProps ();
+let component = ReasonReact.statelessComponent "Problem8";
+let make _children => {
+  ...component,
+  render: fun () _self => {
+    <div> <Problem8Inner /> </div>;
+  }
+}

@@ -48,8 +48,8 @@ external staticRouter : ReactRe.reactClass = "StaticRouter" [@@bs.module "react-
 external send : Express.Response.t => string => Express.done_ = "" [@@bs.send];
 
 module ServerRouter = {
-  let createElement context::(context: Js.Json.t) location::(location: Js.Json.t) =>
-    ReactRe.wrapPropsShamelessly staticRouter {"context": context, "location": location};
+  let make context::(context: Js.Json.t) location::(location: Js.Json.t) children =>
+    ReasonReact.wrapJsForReason reactClass::staticRouter props::{"context": context, "location": location} children;
 };
 
 let geturl req => gett req "url";

@@ -55,11 +55,11 @@ let problems = [
   {link: "/problems/10", description: Problem10Description.src, problem: fun _ => <Problem10 />},
 ];
 
-module Routes = {
-  include ReactRe.Component;
-  type props = unit;
-  let name = "Routes";
-  let render _ =>
+let component = ReasonReact.statelessComponent "Routes";
+
+let make () => {
+  ...component,
+  render: fun () _self => {
     <div className="pure-g" style=containerStyle>
       <div className="pure-u-1-8" style=(ReactDOMRe.Style.make background::"#f5f2f0" ())>
         <ul
@@ -90,8 +90,5 @@ module Routes = {
         )
       </div>
     </div>;
+  }
 };
-
-include ReactRe.CreateComponent Routes;
-
-let createElement = wrapProps ();
