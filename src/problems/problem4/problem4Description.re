@@ -7,44 +7,45 @@ let src = {j|
 * when the square is hovered, the background is blue
 
 ## Instructions
-Building off the workd done last 3, this problem wraps up what you've learnt so far. In this problem we introduce the concept of state. State in this system is essentially used as a sentinel for an internal data change that should force a re-render. The canonical example is a button that increments a counter. On each press of the button, the counter should inrement, causing the counter to re-render.
+Building off the work done last 3, this problem wraps up what you've learnt so far. In this problem we introduce the concept of state. State in this system is essentially used as a sentinel for an internal data change that should force a re-render. The canonical example is a button that increments a counter. On each press of the button, the counter should inrement, causing the counter to re-render.
 
-In reason's react bindings, state is defined as a record type on the internal module of a component. The shape of the internal module is similar to what we saw in [problem1](/problems/1) with the addition of two new properties: state and getInitialState.
+In reason's react bindings, state is defined as a record type available to the make function of a component. The shape of the make function is similar to what we saw in [problem1](/problems/1) with the addition of two new properties: state and initialState.
 
 ```reason
+type state = { count: int, startingCount: int };
 /*
-requires the module to implement:
-  * let name : string;
-  * type props : 'a;
-  * type state : 'a;
-  * let getInitialState = fun props => state;
-  * let render = fun componentBag => ReactRe.createElement;
+  creates a stateful component with a displyName "Counter".
+  requires the make function that spreads the component to define:
+    * let initialState = fun () => state;
+    * let render = fun componentBag => ReasonReact.reactElement;
 */
-include ReactRe.Component.Stateful;
+let component = ReasonReact.statefulComponent "Counter";
 
-/* this component takes no props */
-type props = unit;
+/*
+  define a function make that takes one prop, startingCount which has a default value of 0.
+  also takes children, which we prepend with an underscore, so it is treated as an ignored var.
+*/
+let make ::startingCount=0 _children => {
+  let handleClick _event {state} _self => {
+    ReasonReact.Update {...state, count: state.count + 1}
+  };
+  {
+    ...component,
+    initialState: fun () => { count: 0, startingCount },
+    render: fun state {update} => {
+      <div onClick=(update handleClick)>
+        (ReasonReact.stringToElement {| Started on \$(state.startingCount). |})
+        (ReasonReact.stringToElement "Click Me")
+        (ReasonReact.stringToElement {| Clicked \$(state.count) times! |})
+      </div>
+    }
+  }
+}
 
-/* its name should be displayed as "Counter" */
-let name  "Counter"
-
-/* its state is a record that stores two bools */
-type state = {count: int};
-
-/* when initially rendered, default its state */
-let getInitialState (_:props) => {count: 0};
-
-let handleClick {state} event => {
-  Some {...state, count: state.count + 1}
-};
-
-/* now, we can conditionally render as a result of state, and bind state mutating functions using updater */
-let render ({props, state, updater}:componentBagRecord) => {
-  <div onClick=(updater handleClick)>
-    (ReactRe.stringToElement "Click Me")
-    (ReactRe.stringToElement {| Clicked \$(state.count) times! |})
-  </div>
-};
+/*
+  now, we can conditionally render as a result of state,
+  and bind state mutating functions using updater
+*/
 ```
 
 This opens up some new abilities to us. We can now store the state of the component close in code to where it's used. It's important to note that from the perspective of the component, even though we've termed it "stateful", no variables are mutated. The component itself treats state as an implementation detail left up to the React library.

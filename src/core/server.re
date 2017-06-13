@@ -1,4 +1,5 @@
 open Express;
+open ReactRouter;
 
 type middlewareFn = Request.t => Response.t => Next.t => done_;
 
@@ -43,14 +44,7 @@ external dirname : string = "__dirname" [@@bs.val];
 
 external gett : 'a => string => Js.Json.t = "" [@@bs.get_index];
 
-external staticRouter : ReactRe.reactClass = "StaticRouter" [@@bs.module "react-router"];
-
 external send : Express.Response.t => string => Express.done_ = "" [@@bs.send];
-
-module ServerRouter = {
-  let make context::(context: Js.Json.t) location::(location: Js.Json.t) children =>
-    ReasonReact.wrapJsForReason reactClass::staticRouter props::{"context": context, "location": location} children;
-};
 
 let geturl req => gett req "url";
 

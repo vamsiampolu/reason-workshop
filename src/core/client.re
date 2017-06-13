@@ -20,6 +20,12 @@ let render c =>
 
 render (fun _ => <Routes />);
 
+external highlightAll : unit => unit = "Prism.highlightAll" [@@bs.val];
+
 if hot {
-  accept "./routes.js" (fun _ => render (fun _ => <Routes />))
+  /* accept "./routes.js" (fun _ => render (fun _ => <Routes />)); */
+  accept "./routes.js" (fun _ => {
+    render (fun _ => <Routes />);
+    highlightAll ();
+  });
 };
