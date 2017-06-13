@@ -4,13 +4,13 @@ If you are on windows, or any non-mainstream linux / OSX, please download virtua
 
 This workshop runs a step by step introduction to applying the language to building the game Tic-Tac-Toe, using Reason and React.
 
-Please make sure you have cloned this repository and run all the installation instructions before coming to the workshop. If any instructions are unclear, or if you're having trouble getting set up, please email me at bassjacob@gmail.com or tweet me at @bassjacob and I'll make sure to help you.
+Please make sure you have cloned this repository and run all the installation instructions before coming to the workshop. If any instructions are unclear, or if you're having trouble getting set up, please email me at bassjacob @ gmail and I'll make sure to help you.
 
 ## Requirements
 
-*   NodeJS >= v6.6.0 and npm >= 3 [Installation Instructions](https://nodejs.org/en/download)
+*   NodeJS >= v7.10.0 and npm >= 4 [Installation Instructions](https://nodejs.org/en/download). Do not use NodeJS 8 or npm 5, they are broken currently.
 *   Install refmt, ocamlmerlin and ocamlmerlin-reason according to [reasonml js workflow](https://facebook.github.io/reason/jsWorkflow.html#javascript-workflow-editor-setup-global-utilities).
-    (Spoilers: `npm install -g npm install -g npm install -g git://github.com/reasonml/reason-cli.git#beta-v-1.13.5)
+    (basically just run: `npm install -g npm install -g npm install -g git://github.com/reasonml/reason-cli.git#beta-v-1.13.5`)
 *   Please follow the [reasonml tooling instructions](https://facebook.github.io/reason/tools.html#editor-integration) to set up your text editor. At time of writing this, the following editors are supported:
     *   vim / neovim
     *   emacs
@@ -59,8 +59,8 @@ SERVER_PORT=3000 WEBPACK_PORT=8080 npm run watch;
 
 ## Contact Me
 
-Email: mailto:bassjacob@gmail.com
+Email: bassjacob @ gmail
 
 Twitter: @bassjacob
 
-Join the ReasonML Discord channel
+Discord: [Join the Reason Discord channel](https://discord.gg/reasonml)
