@@ -26,7 +26,6 @@ let appStyle = ReactDOMRe.Style.make height::"100%" width::"100%" ();
 let createProblemView description problem _ => <ProblemView description problem />;
 
 let links = [|
-  ("/", ReasonReact.stringToElement "Home"),
   ("/problems/1", ReasonReact.stringToElement "Problem 1"),
   ("/problems/2", ReasonReact.stringToElement "Problem 2"),
   ("/problems/3", ReasonReact.stringToElement "Problem 3"),
