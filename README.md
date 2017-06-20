@@ -10,7 +10,7 @@ Please make sure you have cloned this repository and run all the installation in
 
 *   NodeJS >= v7.10.0 and npm >= 4 [Installation Instructions](https://nodejs.org/en/download). Do not use NodeJS 8 or npm 5, they are broken currently.
 *   Install refmt, ocamlmerlin and ocamlmerlin-reason according to [reasonml js workflow](https://facebook.github.io/reason/jsWorkflow.html#javascript-workflow-editor-setup-global-utilities).
-    (basically just run: `npm install -g npm install -g npm install -g git://github.com/reasonml/reason-cli.git#beta-v-1.13.5`)
+    (basically just run: `npm install -g git://github.com/reasonml/reason-cli.git#beta-v-1.13.5`)
 *   Please follow the [reasonml tooling instructions](https://facebook.github.io/reason/tools.html#editor-integration) to set up your text editor. At time of writing this, the following editors are supported:
     *   vim / neovim
     *   emacs
