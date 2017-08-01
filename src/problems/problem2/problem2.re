@@ -5,7 +5,7 @@ let style =
 let component = ReasonReact.statelessComponent "Problem2";
 let make _children => {
   ...component,
-  render: fun () _self => {
+  render: fun _self => {
     <div style />;
   }
 };

@@ -1,5 +1,5 @@
 module Route = {
-  external route : ReactRe.reactClass = "Route" [@@bs.module "react-router-dom"];
+  external route : ReasonReact.reactClass = "Route" [@@bs.module "react-router-dom"];
 
   let make exact::(exact: bool) path::(path: string) component::(component: 'a => ReasonReact.reactElement) children =>
     ReasonReact.wrapJsForReason
@@ -9,7 +9,7 @@ module Route = {
 };
 
 module NavLink = {
-  external navLink : ReactRe.reactClass = "NavLink" [@@bs.module "react-router-dom"];
+  external navLink : ReasonReact.reactClass = "NavLink" [@@bs.module "react-router-dom"];
 
   let make _to::(_to: string) children =>
     ReasonReact.wrapJsForReason
@@ -19,7 +19,7 @@ module NavLink = {
 };
 
 module BrowserRouter = {
-  external browserRouter : ReactRe.reactClass = "BrowserRouter" [@@bs.module "react-router-dom"];
+  external browserRouter : ReasonReact.reactClass = "BrowserRouter" [@@bs.module "react-router-dom"];
 
   let make children => ReasonReact.wrapJsForReason
     reactClass::browserRouter
@@ -28,7 +28,7 @@ module BrowserRouter = {
 };
 
 module ServerRouter = {
-  external staticRouter : ReactRe.reactClass = "StaticRouter" [@@bs.module "react-router"];
+  external staticRouter : ReasonReact.reactClass = "StaticRouter" [@@bs.module "react-router"];
 
   let make context::(context: Js.Json.t) location::(location: Js.Json.t) children =>
     ReasonReact.wrapJsForReason
@@ -36,3 +36,5 @@ module ServerRouter = {
       props::{"context": context, "location": location}
       children;
 };
+
+external withRouter : ('a => ReasonReact.reactElement) => ('a => ReasonReact.reactElement) = "" [@@bs.module "react-router"];

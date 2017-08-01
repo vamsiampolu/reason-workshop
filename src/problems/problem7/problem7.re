@@ -23,8 +23,8 @@ let component = ReasonReact.statefulComponent "Problem4";
 let make _children => {
   ...component,
   initialState: fun () => {shape: Circle},
-  render: fun state {update} => {
-    let handleClick shape _event _state _self => ReasonReact.Update {shape: shape};
+  render: fun {state, update} => {
+    let handleClick shape _event _self => ReasonReact.Update {shape: shape};
     <div>
       <div>
         <button onClick=(update @@ handleClick Circle)>

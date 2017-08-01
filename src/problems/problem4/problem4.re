@@ -8,13 +8,13 @@ let boxStyle = ReactDOMRe.Style.make width::"50px" height::"50px" border::"1px b
 
 type state = {hovered: bool, clicked: bool};
 
-let handleClick _event state _self =>
+let handleClick _event {ReasonReact.state}  =>
   /* change this function to return the existing state
      with the clicked prop set to true. you can use the object spread operator
      { ...state, foo: bar } */
   ReasonReact.Update state;
 
-let handleHover _event state _self =>
+let handleHover _event {ReasonReact.state} =>
   /* change this function to return the existing state
      with the hovered prop set to true. you can use the object spread operator
      { ...state, foo: bar } */
@@ -34,7 +34,7 @@ let component = ReasonReact.statefulComponent "Problem4";
 let make _children => {
   ...component,
   initialState: fun () => {hovered: false, clicked: false},
-  render: fun state {update} => {
+  render: fun {state, update} => {
     let style = switchStyle state;
 
     <div

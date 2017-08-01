@@ -8,7 +8,7 @@ let component = ReasonReact.statelessComponent "ProblemView";
 
 let make ::description ::problem _children => {
   ...component,
-  render: fun () _self => {
+  render: fun _self => {
     <div className="pure-g">
       <div style=paneStyle className="pure-u-1-2">
         <ReactMarkdown source=description />

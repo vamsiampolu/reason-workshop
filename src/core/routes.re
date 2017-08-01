@@ -57,7 +57,7 @@ let problems = [|
 let component = ReasonReact.statelessComponent "Routes";
 let make _children => {
   ...component,
-  render: fun () _self => {
+  render: fun _self => {
     <div className="pure-g" style=containerStyle>
       <div className="pure-u-1-8" style=(ReactDOMRe.Style.make background::"#f5f2f0" ())>
         <ul

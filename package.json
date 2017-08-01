@@ -21,7 +21,7 @@
     "react-markdown": "^2.5.0",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "reason-react": "0.1.4",
+    "reason-react": "^0.2.3",
     "webpack": "^2.4.1",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-dev-server": "^2.4.5"
