@@ -1,4 +1,5 @@
 open Express;
+
 open ReactRouter;
 
 type middlewareFn = Request.t => Response.t => Next.t => done_;
@@ -54,7 +55,7 @@ module type Cell = {
   let controller: Express.Request.t => Express.Response.t => Express.Next.t => Express.done_;
 };
 
-module IndexCell : Cell = {
+module IndexCell: Cell = {
   type locals = {app: string};
   let view (locals: locals) => {
     let {app} = locals;
@@ -102,4 +103,4 @@ let safeGetEnv default envvar =>
   | exception _ => default
   };
 
-App.listen app port::(int_of_string @@ safeGetEnv "3000" "SERVER_PORT");
+App.listen app port::(int_of_string @@ safeGetEnv "3000" "SERVER_PORT") ();
