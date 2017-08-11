@@ -11,6 +11,28 @@ module Shape = {
   };
 };
 
+module Circle = Shape.Make {
+  let style = ReactDOMRe.Style.make
+    width::"50px"
+    height::"50px"
+    borderRadius::"50% 50%"
+    ();
+  let render _ => <div style />;
+};
+
+module Square = Shape.Make {
+  let style = ReactDOMRe.Style.make
+    display::"inline-block"
+    width::"50px"
+    height::"50px"
+    border::"1px solid black"
+    marginRight::"5px"
+    ();
+
+  let render _ => <div style />;
+};
+
+
 /*
 use the Shape.Make functor to create two new modules:
   Square
