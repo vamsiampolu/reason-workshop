@@ -4,12 +4,23 @@ let component = ReasonReact.statelessComponent "Problem3";
 let make _children => {
   ...component,
   render: fun {handle} => {
-    let handleClick _ _ =>
+    let handleClick event _ => {
+
       /* change this function to log "clicked" to the JS console */
-      ();
-    let handleHover _ _ =>
-      /* change this function to log "hover began" when the event is a mouseover event  and "hover ended" when the event is a mouseleave event */
-      ();
+      let eventName = ReactEventRe.Mouse._type event;
+      Js.log eventName;
+    };
+
+    let handleHover event _ => {
+        /*
+          change this function to log "hover began"
+          when the event is a mouseover event  and
+          "hover ended" when the event is a mouseleave event
+        */
+      let eventName = ReactEventRe.Mouse._type event;
+      Js.log eventName;
+    };
+
     <div
       style=boxStyle
       onClick=(handle handleClick)

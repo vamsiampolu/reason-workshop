@@ -8,25 +8,28 @@ let boxStyle = ReactDOMRe.Style.make width::"50px" height::"50px" border::"1px b
 
 type state = {hovered: bool, clicked: bool};
 
-let handleClick _event {ReasonReact.state}  =>
+let handleClick _event {ReasonReact.state}  => {
   /* change this function to return the existing state
      with the clicked prop set to true. you can use the object spread operator
      { ...state, foo: bar } */
-  ReasonReact.Update state;
+     let nextState = { ...state, clicked: true};
+     ReasonReact.Update nextState;
+  };
 
-let handleHover _event {ReasonReact.state} =>
+let handleHover _event {ReasonReact.state} => {
   /* change this function to return the existing state
      with the hovered prop set to true. you can use the object spread operator
      { ...state, foo: bar } */
-  ReasonReact.Update state;
+     let nextState = { ...state, hovered: true};
+    ReasonReact.Update nextState;
+  };
 
 let switchStyle state =>
   switch (state.clicked, state.hovered) {
-  /* add the cases so that:
-     clicked: true hovered: false => clicked style
-     clicked: true hovered: true => hovered style
-     clicked: false hovered: true => hovered style
-     clicked: false hovered: false => empty style */
+     |(true,false) => ReactDOMRe.Style.make backgroundColor::"green" ()
+     |(true,true) => ReactDOMRe.Style.make backgroundColor::"green" ()
+     |(false,true) => ReactDOMRe.Style.make backgroundColor::"blue" ()
+     |( false, false) => ReactDOMRe.Style.make ()
   | _ => normalStyle
   };
 

@@ -1,10 +1,17 @@
 let component = ReasonReact.statelessComponent "Problem5";
 
+/*
+let style = ReactDOMRe.Style.make 
+  
+();
+*/
+
 let make _children => {
   ...component,
   render: fun _self => {
-    <div
-      /* create the files problem5Square.re and problem5Square.rei and replace with div with <Problem5Square /> */
-    />;
+    <div>
+      <Problem5Square width="75px" />
+      <Problem5Square width="150px" />
+    </div>;
   }
 };
