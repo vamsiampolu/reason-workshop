@@ -3,7 +3,9 @@ type shape =
   | Circle;
 
 module Shape = {
-  module type Shapeable = {let style: ReactDOMRe.Style.t;};
+  module type Shapeable = {
+    let style: ReactDOMRe.Style.t;
+  };
   module type Shape = {let render: string => ReasonReact.reactElement;};
   module Make (S: Shapeable) :Shape => {
     include S;
@@ -15,9 +17,9 @@ module Circle = Shape.Make {
   let style = ReactDOMRe.Style.make
     width::"50px"
     height::"50px"
+    border::"1px solid black"
     borderRadius::"50% 50%"
     ();
-  let render _ => <div style />;
 };
 
 module Square = Shape.Make {
@@ -28,8 +30,6 @@ module Square = Shape.Make {
     border::"1px solid black"
     marginRight::"5px"
     ();
-
-  let render _ => <div style />;
 };
 
 
@@ -56,11 +56,10 @@ let make _children => {
           (ReasonReact.stringToElement "show square")
         </button>
       </div>
-
       (
         switch state.shape {
-        | Circle => <div> (ReasonReact.stringToElement "change me to a circle") </div>
-        | Square => <div> (ReasonReact.stringToElement "change me to a square") </div>
+        | Circle => <div> (Circle.render "Circle") </div>
+        | Square => <div> (Square.render "Square") </div>
         }
       )
     </div>
